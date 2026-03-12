@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOA BIO PHARM | 로아바이오팜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; font-family: 'Noto Sans KR', sans-serif; }
+
+        /* Navbar */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 64px; }
+        .nav-logo { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 900; color: #1a3a6b; text-decoration: none; }
+        .nav-logo .dot { color: #7ab648; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #444; font-size: .88rem; font-weight: 500; }
+        .nav-links a:hover { color: #1a3a6b; }
+        .menu-btn { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #1a3a6b; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(15,30,60,.72), rgba(15,30,60,.72)),
+                        url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1920&q=80') center/cover;
+            color: #fff; text-align: center;
+        }
+        .hero-inner { padding: 0 20px; }
+        .hero-logo { font-family: 'Inter', sans-serif; font-size: 5rem; font-weight: 900; letter-spacing: 4px; }
+        .hero-logo .dot { color: #7ab648; }
+        .hero-sub { font-size: 1.2rem; letter-spacing: 10px; margin-bottom: 48px; opacity: .85; }
+        .hero-tag { font-size: 1.1rem; margin-bottom: 16px; opacity: .8; }
+        .hero-slogan { font-size: 1rem; opacity: .6; border: 1px solid rgba(255,255,255,.25); display: inline-block; padding: 14px 36px; border-radius: 50px; }
+
+        /* PDF Pages */
+        .pdf-pages { background: #fff; }
+        .pdf-pages canvas {
+            display: block;
+            max-width: 1100px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .loading { text-align: center; padding: 60px 20px; color: #888; font-size: 1rem; }
+
+        /* Footer */
+        footer { padding: 28px; background: #0f2547; color: rgba(255,255,255,.45); text-align: center; font-size: .82rem; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-btn { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #fff; padding: 20px 40px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+            .hero-logo { font-size: 3rem; }
+        }
+        @media (max-width: 600px) {
+            .hero-logo { font-size: 2.2rem; }
+            .hero-sub { font-size: .85rem; letter-spacing: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">LOA<span class="dot">.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#content">소개자료</a></li>
+        </ul>
+        <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <div class="hero-logo">LOA<span class="dot">.</span></div>
+        <div class="hero-sub">BIO PHARM</div>
+        <p class="hero-tag">IgY 항체 기반 스마트 양계 및 글로벌 항체 사업</p>
+        <div class="hero-slogan">"One Health 시대를 선도하는 IgY 플랫폼 기업"</div>
+    </div>
+</section>
+
+<!-- PDF Pages -->
+<div class="pdf-pages" id="content">
+    <div class="loading" id="loading">PDF 로딩 중...</div>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 LOA BIO PHARM Co., Ltd. Strictly Private &amp; Confidential
+</footer>
+
+<script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const container = document.getElementById('content');
+    const loadingEl = document.getElementById('loading');
+
+    const pdfs = [
+        '로아바이오팜 소개자료/로아바이오팜 IgY항체사업 요약.pdf',
+        '로아바이오팜 소개자료/LOA IR K-2.2026.03.12-1.pdf'
+    ];
+
+    async function renderPDF(url) {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const scale = 2;
+            const viewport = page.getViewport({ scale });
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            container.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            await page.render({ canvasContext: ctx, viewport }).promise;
+        }
+    }
+
+    async function loadAll() {
+        for (const url of pdfs) {
+            await renderPDF(url);
+        }
+        loadingEl.remove();
+    }
+
+    loadAll();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const t = document.querySelector(this.getAttribute('href'));
+            if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navLinks').classList.remove('active'); }
+        });
+    });
+</script>
+</body>
+</html>
