@@ -46,7 +46,12 @@
         .loading { text-align: center; padding: 60px 20px; color: #888; font-size: 1rem; }
 
         /* Footer */
-        footer { padding: 28px; background: #0f2547; color: rgba(255,255,255,.45); text-align: center; font-size: .82rem; }
+        footer { padding: 28px 28px 24px; background: #0f2547; color: rgba(255,255,255,.45); text-align: center; font-size: .82rem; }
+        .footer-inner { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+        .footer-inner img { height: 28px; opacity: .5; }
+        .footer-sub { font-size: .75rem; opacity: .7; }
+        .footer-sub a { color: rgba(255,255,255,.45); text-decoration: none; }
+        .footer-sub a:hover { color: rgba(255,255,255,.7); }
 
         @media (max-width: 900px) {
             .nav-inner { flex-direction: row; justify-content: space-between; padding: 0 20px; height: 64px; }
@@ -100,7 +105,11 @@
 
 <!-- Footer -->
 <footer>
-    &copy; 2026. LOA BIOPHARM Inc. All rights reserved.
+    <div class="footer-inner">
+        <img src="logo-light.png" alt="LOA BIO PHARM">
+        <span>&copy; 2026. LOA BIOPHARM Inc. All rights reserved.</span>
+    </div>
+    <div class="footer-sub">(주)로아바이오팜 &#124; <a href="mailto:auseon@naver.com">auseon@naver.com</a></div>
 </footer>
 
 <script>
