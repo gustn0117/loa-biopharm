@@ -12,11 +12,11 @@
 
         /* Navbar */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 64px; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; height: 72px; }
         .nav-logo { text-decoration: none; display: flex; align-items: center; }
-        .nav-logo img { height: 36px; }
+        .nav-logo img { height: 40px; }
         .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a { text-decoration: none; color: #444; font-size: .78rem; font-weight: 500; white-space: nowrap; }
+        .nav-links a { text-decoration: none; color: #333; font-size: .88rem; font-weight: 600; white-space: nowrap; }
         .nav-links a:hover { color: #1a3a6b; }
         .menu-btn { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #1a3a6b; }
 
@@ -41,7 +41,7 @@
             width: 100%;
             height: auto;
             margin: 0 auto;
-            scroll-margin-top: 68px;
+            scroll-margin-top: 76px;
         }
         .loading { text-align: center; padding: 60px 20px; color: #888; font-size: 1rem; }
 
@@ -51,7 +51,7 @@
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .menu-btn { display: block; }
-            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: #fff; padding: 20px 40px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: #fff; padding: 20px 40px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
             .hero-logo { font-size: 3rem; }
         }
         @media (max-width: 600px) {
@@ -69,8 +69,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#executive-summary">Executive Summary</a></li>
-            <li><a href="#problem-rotavirus">Problem: Rota Virus</a></li>
-            <li><a href="#problem-avian-influenza">Problem: Avian Influenza</a></li>
+            <li><a href="#problem-rotavirus">Problem</a></li>
             <li><a href="#solution">Solution</a></li>
             <li><a href="#technology">Technology</a></li>
             <li><a href="#partnership">Partnership</a></li>
@@ -99,7 +98,7 @@
 
 <!-- Footer -->
 <footer>
-    &copy; 2026 LOA BIO PHARM Co., Ltd. Strictly Private &amp; Confidential
+    &copy; 2026. LOA BIOPHARM Inc. All rights reserved.
 </footer>
 
 <script>
