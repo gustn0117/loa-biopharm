@@ -41,6 +41,7 @@
             width: 100%;
             height: auto;
             margin: 0 auto;
+            scroll-margin-top: 68px;
         }
         .loading { text-align: center; padding: 60px 20px; color: #888; font-size: 1rem; }
 
@@ -69,8 +70,10 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#executive-summary">Executive Summary</a></li>
             <li><a href="#problem-rotavirus">Problem: Rota Virus</a></li>
+            <li><a href="#problem-avian-influenza">Problem: Avian Influenza</a></li>
             <li><a href="#solution">Solution</a></li>
             <li><a href="#technology">Technology</a></li>
+            <li><a href="#partnership">Partnership</a></li>
             <li><a href="#global-market">Global Market</a></li>
             <li><a href="#advantage">Advantage</a></li>
             <li><a href="#igy-platform">IgY Platform</a></li>
@@ -112,6 +115,7 @@
         3: 'problem-avian-influenza',
         4: 'solution',
         5: 'technology',
+        6: 'partnership',
         7: 'global-market',
         8: 'advantage',
         9: 'igy-platform',
@@ -119,7 +123,7 @@
     };
 
     const pdfs = [
-        { url: '로아바이오팜 소개자료/LOA IR K-2.2026.03.13-3.pdf', pages: [1,2,3,4,5,7,8,9,10] }
+        { url: '로아바이오팜 소개자료/LOA IR K-2.2026.03.13-3.pdf', pages: [1,2,3,4,5,6,7,8,9,10] }
     ];
 
     async function renderPDF({ url, pages, ids }) {
