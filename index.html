@@ -16,7 +16,7 @@
         .nav-logo { text-decoration: none; display: flex; align-items: center; }
         .nav-logo img { height: 36px; }
         .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a { text-decoration: none; color: #444; font-size: .88rem; font-weight: 500; }
+        .nav-links a { text-decoration: none; color: #444; font-size: .78rem; font-weight: 500; white-space: nowrap; }
         .nav-links a:hover { color: #1a3a6b; }
         .menu-btn { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #1a3a6b; }
 
@@ -67,12 +67,14 @@
         <a href="#" class="nav-logo"><img src="logo-dark.png" alt="LOA BIO PHARM"></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
-            <li><a href="#문제정의">문제정의</a></li>
-            <li><a href="#솔루션">솔루션</a></li>
-            <li><a href="#시장기회">시장기회</a></li>
-            <li><a href="#경쟁우위">경쟁우위</a></li>
-            <li><a href="#사업모델">사업모델</a></li>
-            <li><a href="#회사인사말">회사인사말</a></li>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#problem-rotavirus">Problem: Rota Virus</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#global-market">Global Market</a></li>
+            <li><a href="#advantage">Advantage</a></li>
+            <li><a href="#igy-platform">IgY Platform</a></li>
+            <li><a href="#about-us">About Us</a></li>
         </ul>
         <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
     </div>
@@ -105,12 +107,16 @@
 
     // LOA IR 페이지별 섹션 ID 매핑
     const sectionIds = {
-        3: '문제정의',
-        5: '솔루션',
-        7: '시장기회',
-        8: '경쟁우위',
-        9: '사업모델',
-        10: '회사인사말'
+        1: 'executive-summary',
+        2: 'problem-rotavirus',
+        3: 'problem-avian-influenza',
+        4: 'solution',
+        5: 'technology',
+        6: 'partnership',
+        7: 'global-market',
+        8: 'advantage',
+        9: 'igy-platform',
+        10: 'about-us'
     };
 
     const pdfs = [
