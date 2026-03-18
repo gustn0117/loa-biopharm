@@ -136,7 +136,7 @@
     };
 
     const pdfs = [
-        { url: '로아바이오팜 소개자료/LOA IR K-2.2026.03.16-4.pdf', pages: [1,2,3,4,5,6,7,8,9,10] }
+        { url: '로아바이오팜 소개자료/LOA IR K-2.2026.03.18.pdf', pages: [1,2,3,4,5,6,7,8,9,10] }
     ];
 
     async function renderPDF({ url, pages, ids }) {
@@ -165,6 +165,9 @@
     }
 
     loadAll();
+
+    // 우클릭 방지
+    document.addEventListener('contextmenu', e => e.preventDefault());
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
